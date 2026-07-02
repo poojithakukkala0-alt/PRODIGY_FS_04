@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RealTime Chat - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="card-container">
+        <div class="auth-icon">🔐</div>
+        <h2>Welcome Back</h2>
+        <p class="auth-subtitle">Please enter your account details to continue</p>
+        
+        <div class="input-group">
+            <input type="text" id="loginUser" required placeholder=" ">
+            <label>Username</label>
+        </div>
+        
+        <div class="input-group">
+            <input type="password" id="loginPass" required placeholder=" ">
+            <label>Password</label>
+        </div>
+        
+        <button id="loginBtn">Log In</button>
+        <p class="auth-switch">New to the platform? <a href="signup.html">Create an account</a></p>
+    </div>
+
+    <script>
+        document.getElementById('loginBtn').addEventListener('click', () => {
+            const user = document.getElementById('loginUser').value.trim();
+            const pass = document.getElementById('loginPass').value.trim();
+
+            const users = JSON.parse(localStorage.getItem('chat_users') || '{}');
+
+            if (users[user] && users[user] === pass) {
+                localStorage.setItem('chat_username', user);
+                window.location.href = 'home.html';
+            } else {
+                alert('Invalid username or password!');
+            }
+        });
+    </script>
+</body>
+</html>

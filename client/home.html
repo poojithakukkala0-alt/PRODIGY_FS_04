@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Dashboard - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div>
+                <h2>Welcome back, <span id="welcomeName">Explorer</span>! 👋</h2>
+                <p class="dashboard-sub">Select an active digital room channel below to connect with others</p>
+            </div>
+            <button id="homeLogout" class="btn-danger">Sign Out</button>
+        </div>
+        
+        <div class="rooms-grid">
+            <div class="room-card card-global" onclick="joinRoom('Global Lobby')">
+                <div class="room-badge-icon">🌍</div>
+                <div class="room-details">
+                    <h3>Global Lobby</h3>
+                    <p>Open network. Chat with anyone across the grid instantly.</p>
+                </div>
+                <span class="join-badge">Launch Channel</span>
+            </div>
+            
+            <div class="room-card card-tech" onclick="joinRoom('Tech & Coding')">
+                <div class="room-badge-icon">💻</div>
+                <div class="room-details">
+                    <h3>Tech & Coding</h3>
+                    <p>Debug issues, talk framework architecture, and share programming masala.</p>
+                </div>
+                <span class="join-badge">Launch Channel</span>
+            </div>
+            
+            <div class="room-card card-gaming" onclick="joinRoom('Gaming Zone')">
+                <div class="room-badge-icon">🎮</div>
+                <div class="room-details">
+                    <h3>Gaming Zone</h3>
+                    <p>Find teammates, organize co-op matches, and discuss strategy.</p>
+                </div>
+                <span class="join-badge">Launch Channel</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const username = localStorage.getItem('chat_username');
+        if (!username) {
+            window.location.href = 'index.html';
+        }
+        document.getElementById('welcomeName').innerText = username;
+
+        function joinRoom(roomName) {
+            localStorage.setItem('current_chat_room', roomName);
+            window.location.href = 'chat.html';
+        }
+
+        document.getElementById('homeLogout').addEventListener('click', () => {
+            localStorage.removeItem('chat_username');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

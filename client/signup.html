@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RealTime Chat - Signup</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="card-container">
+        <div class="auth-icon">🚀</div>
+        <h2>Get Started</h2>
+        <p class="auth-subtitle">Create a secure profile to access the rooms</p>
+        
+        <div class="input-group">
+            <input type="text" id="signupUser" required placeholder=" ">
+            <label>Choose Username</label>
+        </div>
+        
+        <div class="input-group">
+            <input type="password" id="signupPass" required placeholder=" ">
+            <label>Create Password</label>
+        </div>
+        
+        <button id="signupBtn">Create Account</button>
+        <p class="auth-switch">Already have an account? <a href="index.html">Login here</a></p>
+    </div>
+
+    <script>
+        document.getElementById('signupBtn').addEventListener('click', () => {
+            const user = document.getElementById('signupUser').value.trim();
+            const pass = document.getElementById('signupPass').value.trim();
+
+            if (!user || !pass) {
+                alert('Please fill out all fields.');
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('chat_users') || '{}');
+            if (users[user]) {
+                alert('Username already taken!');
+                return;
+            }
+
+            users[user] = pass;
+            localStorage.setItem('chat_users', JSON.stringify(users));
+            alert('Registration successful! Please log in.');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

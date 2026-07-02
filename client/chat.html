@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RealTime Chat Room</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Socket.IO client library auto-served by our backend server -->
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div class="chat-wrapper">
+        <div class="chat-header">
+            <!-- Updated to dynamically display the active room name -->
+            <h3 id="roomTitle">💬 Loading Room...</h3>
+            <button id="logoutBtn">Leave</button>
+        </div>
+        
+        <div id="messagesContainer" class="messages-container"></div>
+        
+        <!-- Live typing indicator box -->
+        <div id="typingIndicator" class="typing-indicator"></div>
+        
+        <div class="chat-input-area">
+            <input type="text" id="messageInput" placeholder="Type your message here..." autocomplete="off">
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
