@@ -4,7 +4,7 @@
   "description": "Root manager for RealTime Chat Application",
   "main": "index.js",
   "scripts": {
-    "server": "cd server && nodemon server.js",
+    "server": "cd server && node server.js",
     "start": "concurrently \"npm run server\""
   },
   "devDependencies": {
